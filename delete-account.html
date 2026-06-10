@@ -1,0 +1,115 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>Eliminar tu cuenta — Cromora</title>
+<meta name="description" content="Cómo eliminar tu cuenta de Cromora y los datos asociados, desde la aplicación o por correo." />
+<link rel="preconnect" href="https://fonts.googleapis.com" />
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+<link href="https://fonts.googleapis.com/css2?family=Hanken+Grotesk:wght@400;500;600;700;800&family=Bricolage+Grotesque:opsz,wght@12..96,700;12..96,800&display=swap" rel="stylesheet" />
+<style>
+  :root {
+    --bg: #0B0E13; --bg2: #11161E; --surface: #161C26; --surface-2: #1D2430;
+    --border: rgba(255,255,255,0.09); --border-strong: rgba(255,255,255,0.16);
+    --text: #F3EFE8; --text-2: #C2C7D0; --muted: #868E9B;
+    --amber: #D4844A; --amber-l: #ECB079; --amber-soft: rgba(212,132,74,0.14);
+    --danger: #CF6A59; --danger-soft: rgba(207,106,89,0.14);
+    --ink: #20140A;
+    --font-ui: 'Hanken Grotesk', system-ui, sans-serif;
+    --font-display: 'Bricolage Grotesque', 'Hanken Grotesk', sans-serif;
+  }
+  * { box-sizing: border-box; }
+  body { margin: 0; background: var(--bg); color: var(--text); font-family: var(--font-ui); line-height: 1.65; -webkit-font-smoothing: antialiased; }
+  .nav { position: sticky; top: 0; z-index: 50; backdrop-filter: blur(14px);
+    background: color-mix(in oklab, var(--bg) 82%, transparent); border-bottom: 1px solid var(--border); }
+  .nav-in { max-width: 820px; margin: 0 auto; padding: 14px 24px; display: flex; align-items: center; justify-content: space-between; gap: 16px; }
+  .brand { display: flex; align-items: center; gap: 10px; font-family: var(--font-display); font-weight: 800; font-size: 18px; letter-spacing: -.4px; color: var(--text); text-decoration: none; }
+  .brand .bi { width: 28px; height: 28px; border-radius: 8px; background: var(--amber); display: flex; align-items: center; justify-content: center; flex-shrink: 0; }
+  .nav a.back { color: var(--text-2); text-decoration: none; font-weight: 700; font-size: 13.5px; white-space: nowrap; }
+  .nav a.back:hover { color: var(--amber-l); }
+  .wrap { max-width: 820px; margin: 0 auto; padding: 56px 24px 88px; }
+  .head { position: relative; padding-bottom: 28px; border-bottom: 1px solid var(--border); margin-bottom: 36px; }
+  .head::before { content: ''; position: absolute; left: -24px; right: -24px; top: -56px; bottom: 0; z-index: -1;
+    background: radial-gradient(620px 320px at 30% 0%, rgba(212,132,74,0.10) 0%, transparent 70%); pointer-events: none; }
+  h1 { font-family: var(--font-display); font-weight: 800; font-size: clamp(30px, 5vw, 42px); letter-spacing: -1.2px; line-height: 1.06; margin: 0 0 14px; }
+  .meta { color: var(--muted); font-size: 14px; margin: 0; }
+  .meta a { color: var(--amber-l); }
+  h2 { font-family: var(--font-display); font-weight: 700; font-size: 21px; letter-spacing: -.3px; margin: 42px 0 12px; }
+  p { color: var(--text-2); margin: 0 0 14px; }
+  strong { color: var(--text); }
+  a { color: var(--amber-l); }
+  ol, ul { color: var(--text-2); margin: 0 0 6px; padding-left: 20px; }
+  li { margin: 7px 0; }
+  .card { background: var(--surface); border: 1px solid var(--border-strong); border-radius: 18px; padding: 20px 22px; margin: 16px 0; }
+  .card .opt { display: inline-block; font-size: 11px; font-weight: 800; letter-spacing: .5px; text-transform: uppercase;
+    background: var(--amber-soft); color: var(--amber-l); border-radius: 999px; padding: 4px 12px; margin-bottom: 12px; }
+  .warn { background: var(--danger-soft); border: 1px solid rgba(207,106,89,0.3); border-radius: 14px; padding: 14px 18px; color: var(--text); font-size: 14.5px; margin: 16px 0; display: flex; gap: 12px; align-items: flex-start; }
+  .warn svg { flex-shrink: 0; margin-top: 2px; }
+  footer { border-top: 1px solid var(--border); margin-top: 56px; padding-top: 24px; color: var(--muted); font-size: 13px; }
+  footer a { color: var(--muted); }
+</style>
+</head>
+<body>
+
+<nav class="nav">
+  <div class="nav-in">
+    <a class="brand" href="./cromora.html">
+      <span class="bi"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#20140A" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round"><path d="M7 7h11l-3-3M17 17H6l3 3"/></svg></span>
+      Cromora
+    </a>
+    <a class="back" href="./cromora.html">← Volver a Cromora</a>
+  </div>
+</nav>
+
+<div class="wrap">
+<div class="head">
+  <h1>Eliminar tu cuenta de Cromora</h1>
+  <p class="meta">Aplicación <strong>Cromora</strong> (Android e iOS), operada por <strong>Inventamos Labs</strong> — <a href="https://inventamoslabs.com">inventamoslabs.com</a>.</p>
+</div>
+
+<div class="warn">
+  <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#CF6A59" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 3l9 16H3zM12 10v4M12 17h.01"/></svg>
+  <span>Puedes eliminar tu cuenta y los datos asociados en cualquier momento. La eliminación es <strong>definitiva e irreversible</strong>.</span>
+</div>
+
+<h2>Opción 1 — Desde la aplicación (inmediato)</h2>
+<div class="card">
+  <span class="opt">Recomendada</span>
+  <ol>
+    <li>Abre Cromora e inicia sesión.</li>
+    <li>Ve a la pestaña <strong>Perfil</strong>.</li>
+    <li>Al final de la pantalla, toca <strong>Eliminar cuenta</strong>.</li>
+    <li>Confirma con <strong>Eliminar definitivamente</strong>.</li>
+  </ol>
+  <p style="margin-bottom:0">La cuenta se elimina en el momento y se cierra la sesión en este dispositivo.</p>
+</div>
+
+<h2>Opción 2 — Por correo (sin necesidad de la aplicación)</h2>
+<div class="card">
+  <span class="opt">Hasta 30 días</span>
+  <p style="margin-bottom:0">Escribe a <a href="/cdn-cgi/l/email-protection#11627e617e63657451787f67747f65707c7e627d7073623f727e7c2e6264737b7472652c547d787c787f70633423217c783423217264747f6570342321757434232152637e7c7e6370"><span class="__cf_email__" data-cfemail="4c3f233c233e38290c25223a2922382d21233f202d2e3f622f2321">[email&#160;protected]</span></a> <strong>desde el correo registrado en tu cuenta</strong>, con el asunto "Eliminar mi cuenta de Cromora". Procesamos la solicitud y te confirmamos en un plazo máximo de 30 días.</p>
+</div>
+
+<h2>Qué se elimina</h2>
+<ul>
+  <li>Tu perfil (nombre, correo, teléfono, fecha de nacimiento).</li>
+  <li>Tu colección sincronizada en la nube.</li>
+  <li>Tus publicaciones de intercambio, propuestas e historial de intercambios.</li>
+  <li>Los tokens de notificaciones de tus dispositivos.</li>
+</ul>
+
+<h2>Qué puede conservarse</h2>
+<ul>
+  <li>Las reseñas que dejaste sobre otras personas, de forma <strong>anonimizada</strong> (sin tu nombre), para preservar la reputación de la otra parte.</li>
+  <li>Registros mínimos por el tiempo estrictamente necesario para seguridad, prevención de fraude u obligaciones legales.</li>
+</ul>
+
+<p>Los datos guardados solo en tu dispositivo (por ejemplo, el progreso en modo invitado) se eliminan al desinstalar la aplicación.</p>
+
+<p>Más información en nuestra <a href="./privacy-policy.html">Política de Privacidad</a>.</p>
+
+<footer>© 2026 <a href="https://inventamoslabs.com">Inventamos Labs</a> · <a href="./cromora.html">Cromora</a> · <a href="./privacy-policy.html">Política de Privacidad</a></footer>
+</div>
+<script data-cfasync="false" src="/cdn-cgi/scripts/5c5dd728/cloudflare-static/email-decode.min.js"></script></body>
+</html>

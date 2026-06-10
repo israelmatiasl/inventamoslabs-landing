@@ -1,0 +1,419 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>Cromora — Cambia cromos. Completa tu álbum.</title>
+<meta name="description" content="Cromora es la app para coleccionistas: explora catálogos de álbumes, registra tu colección, publica repetidas e intercambia con personas reales cerca de ti." />
+<meta property="og:title" content="Cromora — Cambia cromos. Completa tu álbum." />
+<meta property="og:description" content="La app para coleccionistas: catálogo, colección offline-first, intercambios con reputación real. Sin pagos, sin publicidad." />
+<meta property="og:type" content="website" />
+<link rel="preconnect" href="https://fonts.googleapis.com" />
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+<link href="https://fonts.googleapis.com/css2?family=Hanken+Grotesk:wght@400;500;600;700;800&family=Bricolage+Grotesque:opsz,wght@12..96,600;12..96,700;12..96,800&display=swap" rel="stylesheet" />
+<style>
+  :root {
+    --bg: #0B0E13;
+    --bg2: #11161E;
+    --surface: #161C26;
+    --surface-2: #1D2430;
+    --border: rgba(255,255,255,0.08);
+    --border-strong: rgba(255,255,255,0.16);
+    --text: #F3EFE8;
+    --text-2: #C2C7D0;
+    --muted: #868E9B;
+    --amber: #D4844A;
+    --amber-l: #ECB079;
+    --amber-d: #B0682F;
+    --amber-soft: rgba(212,132,74,0.14);
+    --green: #5FAE7D;
+    --green-soft: rgba(95,174,125,0.15);
+    --paper: #EFE6D8;
+    --ink: #20140A;
+    --font-ui: 'Hanken Grotesk', system-ui, sans-serif;
+    --font-display: 'Bricolage Grotesque', 'Hanken Grotesk', sans-serif;
+  }
+  * { box-sizing: border-box; }
+  html { scroll-behavior: smooth; }
+  body {
+    margin: 0; background: var(--bg); color: var(--text);
+    font-family: var(--font-ui); line-height: 1.55;
+    -webkit-font-smoothing: antialiased; text-rendering: optimizeLegibility;
+    overflow-x: hidden;
+  }
+  a { color: var(--amber-l); }
+  .wrap { max-width: 1080px; margin: 0 auto; padding: 0 24px; }
+
+  /* ---------- nav ---------- */
+  .nav { position: sticky; top: 0; z-index: 50; backdrop-filter: blur(14px);
+    background: color-mix(in oklab, var(--bg) 82%, transparent); border-bottom: 1px solid var(--border); }
+  .nav-in { max-width: 1080px; margin: 0 auto; padding: 14px 24px; display: flex; align-items: center; justify-content: space-between; gap: 16px; }
+  .brand { display: flex; align-items: center; gap: 10px; font-family: var(--font-display); font-weight: 800; font-size: 19px; letter-spacing: -.4px; color: var(--text); text-decoration: none; }
+  .brand .bi { width: 30px; height: 30px; border-radius: 9px; background: var(--amber); display: flex; align-items: center; justify-content: center; flex-shrink: 0; }
+  .nav-links { display: flex; gap: 26px; align-items: center; }
+  .nav-links a { color: var(--text-2); text-decoration: none; font-weight: 600; font-size: 14px; }
+  .nav-links a:hover { color: var(--text); }
+  .nav-cta { background: var(--amber); color: var(--ink) !important; font-weight: 800; padding: 9px 18px; border-radius: 999px; font-size: 13.5px !important; }
+  @media (max-width: 720px) { .nav-links a:not(.nav-cta) { display: none; } }
+
+  /* ---------- hero ---------- */
+  .hero { position: relative; padding: 86px 0 40px; overflow: hidden; }
+  .hero::before { content: ''; position: absolute; inset: 0;
+    background:
+      radial-gradient(700px 480px at 72% 30%, rgba(212,132,74,0.16) 0%, transparent 65%),
+      radial-gradient(900px 600px at 15% -10%, #1d2735 0%, transparent 60%);
+    pointer-events: none; }
+  .hero-grid { position: relative; display: grid; grid-template-columns: 1.1fr 0.9fr; gap: 48px; align-items: center; }
+  @media (max-width: 880px) { .hero-grid { grid-template-columns: 1fr; } }
+  .kicker { display: inline-flex; align-items: center; gap: 8px; font-size: 12.5px; font-weight: 800; letter-spacing: .8px; text-transform: uppercase; color: var(--amber-l);
+    background: var(--amber-soft); border: 1px solid rgba(212,132,74,0.25); padding: 7px 14px; border-radius: 999px; margin-bottom: 22px; }
+  h1 { font-family: var(--font-display); font-weight: 800; font-size: clamp(42px, 6.4vw, 72px); line-height: 1.0; letter-spacing: -2.2px; margin: 0 0 22px; }
+  h1 .am { color: var(--amber-l); }
+  .lede { font-size: 19px; color: var(--text-2); max-width: 480px; margin: 0 0 30px; }
+  .hero-ctas { display: flex; gap: 14px; flex-wrap: wrap; align-items: center; }
+  .store-btn { display: inline-flex; align-items: center; gap: 12px; background: var(--surface); border: 1px solid var(--border-strong);
+    border-radius: 14px; padding: 11px 20px 11px 14px; text-decoration: none; color: var(--text); transition: transform .15s ease, border-color .15s ease; }
+  .store-btn:hover { transform: translateY(-2px); border-color: var(--amber); }
+  .store-btn .stxt { display: flex; flex-direction: column; line-height: 1.15; }
+  .store-btn .s1 { font-size: 10.5px; font-weight: 700; letter-spacing: .4px; text-transform: uppercase; color: var(--muted); }
+  .store-btn .s2 { font-size: 16px; font-weight: 800; font-family: var(--font-display); }
+  .hero-meta { display: flex; gap: 18px; margin-top: 26px; flex-wrap: wrap; }
+  .hero-meta span { display: inline-flex; align-items: center; gap: 7px; font-size: 13.5px; font-weight: 600; color: var(--text-2); }
+  .hero-meta .d { width: 7px; height: 7px; border-radius: 50%; background: var(--amber); flex-shrink: 0; }
+
+  /* floating cards scene */
+  .scene { position: relative; height: 460px; }
+  @media (max-width: 880px) { .scene { height: 380px; max-width: 420px; margin: 0 auto; } }
+  .fcard { position: absolute; border-radius: 18px; box-shadow: 0 30px 60px -18px rgba(0,0,0,0.65); will-change: transform; }
+  .fcard.amber { background: linear-gradient(150deg, var(--amber-l) 0%, var(--amber) 45%, var(--amber-d) 100%); }
+  .fcard.paper { background: linear-gradient(150deg, #F6EFE3 0%, var(--paper) 55%, #DCD1BE 100%); }
+  .fcard.slot { background: transparent; border: 3px dashed rgba(239,230,216,0.30); box-shadow: none; }
+  .fcard .inner { position: absolute; inset: 12px; border-radius: 12px; border: 2.5px solid rgba(0,0,0,0.14); }
+  .fcard .glyph { position: absolute; inset: 0; display: flex; align-items: center; justify-content: center; }
+  .f1 { width: 168px; height: 224px; left: 8%; top: 12%; transform: rotate(-12deg); animation: float1 7s ease-in-out infinite; }
+  .f2 { width: 196px; height: 262px; left: 38%; top: 26%; transform: rotate(4deg); z-index: 3; animation: float2 8s ease-in-out infinite; }
+  .f3 { width: 150px; height: 200px; right: 4%; top: 6%; transform: rotate(13deg); animation: float3 9s ease-in-out infinite; }
+  .f4 { width: 130px; height: 174px; right: 14%; bottom: 4%; transform: rotate(-7deg); }
+  @keyframes float1 { 50% { transform: rotate(-12deg) translateY(-12px); } }
+  @keyframes float2 { 50% { transform: rotate(4deg) translateY(-16px); } }
+  @keyframes float3 { 50% { transform: rotate(13deg) translateY(-10px); } }
+  @media (prefers-reduced-motion: reduce) { .fcard { animation: none !important; } }
+  .swap-disc { position: absolute; left: 26%; bottom: 14%; width: 92px; height: 92px; border-radius: 50%; z-index: 4;
+    background: linear-gradient(140deg, var(--amber-l), var(--amber-d)); display: flex; align-items: center; justify-content: center;
+    box-shadow: 0 22px 44px -12px rgba(212,132,74,0.5); }
+  .badge-x3 { position: absolute; left: 4%; top: 4%; z-index: 5; background: var(--surface); border: 1px solid var(--border-strong);
+    border-radius: 999px; padding: 6px 14px; font-family: var(--font-display); font-weight: 800; font-size: 16px; color: var(--amber-l);
+    box-shadow: 0 12px 28px -8px rgba(0,0,0,0.6); }
+  .badge-match { position: absolute; right: 0; top: 44%; z-index: 5; background: var(--surface); border: 1px solid var(--border-strong);
+    border-radius: 14px; padding: 10px 16px; display: flex; align-items: center; gap: 9px; box-shadow: 0 12px 28px -8px rgba(0,0,0,0.6); }
+  .badge-match b { font-size: 13.5px; }
+  .badge-match .dd { width: 9px; height: 9px; border-radius: 50%; background: var(--green); }
+
+  /* ---------- ticker ---------- */
+  .ticker { border-top: 1px solid var(--border); border-bottom: 1px solid var(--border); padding: 16px 0; overflow: hidden; background: var(--bg2); }
+  .ticker-in { display: flex; gap: 48px; white-space: nowrap; animation: tick 30s linear infinite; width: max-content; }
+  @keyframes tick { to { transform: translateX(-50%); } }
+  @media (prefers-reduced-motion: reduce) { .ticker-in { animation: none; } }
+  .ticker span { font-family: var(--font-display); font-weight: 700; font-size: 15px; color: var(--muted); display: inline-flex; align-items: center; gap: 14px; }
+  .ticker .tk { color: var(--amber); }
+
+  /* ---------- sections ---------- */
+  section { padding: 88px 0; }
+  .sec-kicker { font-size: 12.5px; font-weight: 800; letter-spacing: .8px; text-transform: uppercase; color: var(--amber-l); margin-bottom: 12px; }
+  h2 { font-family: var(--font-display); font-weight: 800; font-size: clamp(30px, 4.4vw, 46px); letter-spacing: -1.2px; line-height: 1.05; margin: 0 0 16px; }
+  .sec-lede { font-size: 17px; color: var(--text-2); max-width: 560px; margin: 0 0 44px; }
+
+  /* features */
+  .feat-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 18px; }
+  @media (max-width: 880px) { .feat-grid { grid-template-columns: 1fr 1fr; } }
+  @media (max-width: 600px) { .feat-grid { grid-template-columns: 1fr; } }
+  .feat { background: var(--surface); border: 1px solid var(--border); border-radius: 20px; padding: 26px 24px; position: relative; transition: transform .2s ease, border-color .2s ease; }
+  .feat:hover { transform: translateY(-4px); border-color: var(--border-strong); }
+  .feat .fi { width: 46px; height: 46px; border-radius: 13px; background: var(--amber-soft); color: var(--amber-l); display: flex; align-items: center; justify-content: center; margin-bottom: 16px; }
+  .feat h3 { font-family: var(--font-display); font-weight: 700; font-size: 19px; margin: 0 0 8px; }
+  .feat p { color: var(--text-2); font-size: 14px; margin: 0; }
+  .feat .tag { position: absolute; top: 20px; right: 20px; font-size: 10.5px; font-weight: 800; letter-spacing: .3px; text-transform: uppercase; padding: 4px 10px; border-radius: 999px; white-space: nowrap; }
+  .tag.guest { background: var(--green-soft); color: var(--green); }
+  .tag.account { background: var(--amber-soft); color: var(--amber-l); }
+  .feat.wide { grid-column: span 3; display: grid; grid-template-columns: auto 1fr; gap: 22px; align-items: center; }
+  @media (max-width: 880px) { .feat.wide { grid-column: span 2; grid-template-columns: 1fr; } }
+  @media (max-width: 600px) { .feat.wide { grid-column: span 1; } }
+
+  /* how it works */
+  .how { background: var(--bg2); border-top: 1px solid var(--border); border-bottom: 1px solid var(--border); }
+  .steps { display: grid; grid-template-columns: repeat(4, 1fr); gap: 16px; counter-reset: paso; }
+  @media (max-width: 880px) { .steps { grid-template-columns: 1fr 1fr; } }
+  @media (max-width: 560px) { .steps { grid-template-columns: 1fr; } }
+  .step { background: var(--surface); border: 1px solid var(--border); border-radius: 20px; padding: 24px 22px; counter-increment: paso; }
+  .step::before { content: '0' counter(paso); font-family: var(--font-display); font-weight: 800; font-size: 15px; color: var(--ink);
+    background: var(--amber); border-radius: 10px; padding: 4px 10px; display: inline-block; margin-bottom: 16px; }
+  .step h3 { font-family: var(--font-display); font-weight: 700; font-size: 17px; margin: 0 0 6px; }
+  .step p { color: var(--text-2); font-size: 13.5px; margin: 0; }
+
+  /* trust strip */
+  .trust { display: grid; grid-template-columns: repeat(3, 1fr); gap: 18px; margin-top: 44px; }
+  @media (max-width: 720px) { .trust { grid-template-columns: 1fr; } }
+  .trust .t { border: 1px solid var(--border); border-radius: 18px; padding: 20px 22px; background: color-mix(in oklab, var(--surface) 60%, transparent); }
+  .trust .t b { display: flex; align-items: center; gap: 9px; font-size: 15px; margin-bottom: 6px; }
+  .trust .t p { margin: 0; font-size: 13.5px; color: var(--text-2); }
+
+  /* guest vs account */
+  .acc-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 18px; }
+  @media (max-width: 720px) { .acc-grid { grid-template-columns: 1fr; } }
+  .acc { border-radius: 22px; padding: 30px 28px; border: 1px solid var(--border); }
+  .acc.guest-card { background: var(--surface); }
+  .acc.account-card { background: linear-gradient(160deg, rgba(212,132,74,0.16) 0%, rgba(212,132,74,0.05) 60%), var(--surface); border-color: rgba(212,132,74,0.3); }
+  .acc h3 { font-family: var(--font-display); font-weight: 800; font-size: 22px; margin: 0 0 4px; }
+  .acc .sub { color: var(--muted); font-size: 13.5px; margin: 0 0 20px; }
+  .acc ul { list-style: none; margin: 0; padding: 0; display: flex; flex-direction: column; gap: 12px; }
+  .acc li { display: flex; align-items: flex-start; gap: 11px; font-size: 14.5px; font-weight: 600; }
+  .acc li .ck { flex-shrink: 0; width: 22px; height: 22px; border-radius: 50%; display: flex; align-items: center; justify-content: center; margin-top: -1px; }
+  .acc.guest-card .ck { background: var(--green-soft); color: var(--green); }
+  .acc.account-card .ck { background: var(--amber-soft); color: var(--amber-l); }
+
+  /* CTA final */
+  .final { text-align: center; position: relative; overflow: hidden; }
+  .final::before { content: ''; position: absolute; inset: 0;
+    background: radial-gradient(560px 320px at 50% 100%, rgba(212,132,74,0.18) 0%, transparent 70%); pointer-events: none; }
+  .final h2 { font-size: clamp(34px, 5.4vw, 56px); }
+  .final .hero-ctas { justify-content: center; margin-top: 30px; }
+
+  /* footer */
+  footer { border-top: 1px solid var(--border); padding: 40px 0 56px; background: var(--bg2); }
+  .foot-grid { display: flex; justify-content: space-between; gap: 24px; flex-wrap: wrap; align-items: flex-start; }
+  .foot-links { display: flex; gap: 26px; flex-wrap: wrap; }
+  .foot-links a { color: var(--text-2); text-decoration: none; font-size: 13.5px; font-weight: 600; }
+  .foot-links a:hover { color: var(--amber-l); }
+  .foot-note { margin-top: 22px; color: var(--muted); font-size: 12.5px; }
+  .foot-note a { color: var(--muted); }
+
+  /* reveal on scroll */
+  .rv { opacity: 0; transform: translateY(22px); transition: opacity .6s ease, transform .6s ease; }
+  .rv.on { opacity: 1; transform: none; }
+  @media (prefers-reduced-motion: reduce) { .rv { opacity: 1; transform: none; transition: none; } }
+</style>
+</head>
+<body>
+
+<nav class="nav">
+  <div class="nav-in">
+    <a class="brand" href="#top">
+      <span class="bi"><svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="#20140A" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round"><path d="M7 7h11l-3-3M17 17H6l3 3"/></svg></span>
+      Cromora
+    </a>
+    <div class="nav-links">
+      <a href="#funciones">Funciones</a>
+      <a href="#como">Cómo funciona</a>
+      <a href="#cuenta">Invitado vs cuenta</a>
+      <a class="nav-cta" href="#descargar">Descargar</a>
+    </div>
+  </div>
+</nav>
+
+<header class="hero" id="top">
+  <div class="wrap hero-grid">
+    <div>
+      <span class="kicker">★ Para coleccionistas de verdad</span>
+      <h1>Cambia cromos.<br /><span class="am">Completa</span> tu álbum.</h1>
+      <p class="lede">Explora el catálogo, registra tu colección y propón intercambios con coleccionistas reales cerca de ti. Sin pagos, sin publicidad: cromo por cromo.</p>
+      <div class="hero-ctas" id="descargar">
+        <a class="store-btn" href="#" aria-label="Próximamente en Google Play">
+          <svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linejoin="round"><path d="M5 3.5v17L17.5 12zM5 3.5 13 9M5 20.5 13 15M17.5 12l2.8 1.6c1 .6 1 1 0 1.6l-2.8-3.2 2.8-3.2c1 .6 1 1 0 1.6z"/></svg>
+          <span class="stxt"><span class="s1">Próximamente en</span><span class="s2">Google Play</span></span>
+        </a>
+        <a class="store-btn" href="#" aria-label="Próximamente en App Store">
+          <svg width="26" height="26" viewBox="0 0 24 24" fill="currentColor"><path d="M16.4 12.8c0-2.2 1.8-3.2 1.9-3.3-1-1.5-2.6-1.7-3.2-1.7-1.4-.1-2.7.8-3.4.8-.7 0-1.8-.8-2.9-.8-1.5 0-2.9.9-3.7 2.2-1.6 2.7-.4 6.8 1.1 9 .7 1.1 1.6 2.3 2.8 2.3 1.1 0 1.5-.7 2.9-.7s1.7.7 2.9.7c1.2 0 2-1.1 2.7-2.2.9-1.2 1.2-2.4 1.2-2.5-.1 0-2.3-.9-2.3-3.8zM14.2 5.6c.6-.8 1-1.8.9-2.9-.9 0-2 .6-2.6 1.4-.6.7-1.1 1.8-.9 2.8 1 .1 2-.5 2.6-1.3z"/></svg>
+          <span class="stxt"><span class="s1">Próximamente en</span><span class="s2">App Store</span></span>
+        </a>
+      </div>
+      <div class="hero-meta">
+        <span><span class="d"></span> Sin pagos</span>
+        <span><span class="d"></span> Reputación real</span>
+        <span><span class="d"></span> Funciona sin conexión</span>
+      </div>
+    </div>
+
+    <div class="scene" aria-hidden="true">
+      <span class="badge-x3">×3 repetidas</span>
+      <div class="fcard paper f1"><div class="inner"></div></div>
+      <div class="fcard amber f2">
+        <div class="inner"></div>
+        <div class="glyph">
+          <svg width="84" height="84" viewBox="0 0 24 24" fill="#20140A"><path d="M12 3l2.7 5.6 6.1.9-4.4 4.3 1 6.1-5.4-2.9-5.4 2.9 1-6.1L3.2 9.5l6.1-.9z"/></svg>
+        </div>
+      </div>
+      <div class="fcard paper f3"><div class="inner"></div></div>
+      <div class="fcard slot f4"></div>
+      <div class="swap-disc">
+        <svg width="44" height="44" viewBox="0 0 24 24" fill="none" stroke="#20140A" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round"><path d="M7 7h11l-3-3M17 17H6l3 3"/></svg>
+      </div>
+      <div class="badge-match"><span class="dd"></span><b>Match perfecto · 2,4 km</b></div>
+    </div>
+  </div>
+</header>
+
+<div class="ticker" aria-hidden="true">
+  <div class="ticker-in">
+    <span>EXPLORA EL CATÁLOGO <i class="tk">★</i></span><span>PUBLICA TUS REPETIDAS <i class="tk">★</i></span><span>PROPÓN INTERCAMBIOS <i class="tk">★</i></span><span>SINCRONIZA EN LA NUBE <i class="tk">★</i></span><span>CONSTRUYE TU REPUTACIÓN <i class="tk">★</i></span>
+    <span>EXPLORA EL CATÁLOGO <i class="tk">★</i></span><span>PUBLICA TUS REPETIDAS <i class="tk">★</i></span><span>PROPÓN INTERCAMBIOS <i class="tk">★</i></span><span>SINCRONIZA EN LA NUBE <i class="tk">★</i></span><span>CONSTRUYE TU REPUTACIÓN <i class="tk">★</i></span>
+  </div>
+</div>
+
+<section id="funciones">
+  <div class="wrap">
+    <p class="sec-kicker rv">Todo lo que necesitas</p>
+    <h2 class="rv">Tu álbum, tus repetidas,<br />tus intercambios.</h2>
+    <p class="sec-lede rv">Cromora junta en una sola app el ciclo completo del coleccionista: del catálogo al intercambio cara a cara.</p>
+    <div class="feat-grid">
+      <div class="feat rv">
+        <span class="tag account">Con cuenta</span>
+        <div class="fi"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 4h7v7H4zM13 4h7v7h-7zM4 13h7v7H4zM13 13h7v7h-7z"/></svg></div>
+        <h3>Gestiona tus álbumes</h3>
+        <p>Marca lo que tienes, lo que falta y tus repetidas, casilla por casilla, con tu progreso siempre a la vista.</p>
+      </div>
+      <div class="feat rv">
+        <span class="tag account">Con cuenta</span>
+        <div class="fi"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M7 7h11l-3-3M17 17H6l3 3"/></svg></div>
+        <h3>Publica repetidas</h3>
+        <p>Ofrece hasta 5 cromos y pide los que te faltan. Tus publicaciones viven 48 horas y se renuevan cuando quieras.</p>
+      </div>
+      <div class="feat rv">
+        <span class="tag account">Con cuenta</span>
+        <div class="fi"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M13 6l6 6-6 6"/></svg></div>
+        <h3>Propón intercambios</h3>
+        <p>Negocia con propuestas y contrapropuestas hasta cerrar el trato. El WhatsApp se comparte recién al aceptar.</p>
+      </div>
+      <div class="feat rv">
+        <span class="tag account">Con cuenta</span>
+        <div class="fi"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 12a8 8 0 0 1 14-5l2 2M20 12a8 8 0 0 1-14 5l-2-2M18 4v5h-5M6 20v-5h5"/></svg></div>
+        <h3>Sincroniza en la nube</h3>
+        <p>Tu colección se guarda en tu cuenta y funciona sin conexión: marca cromos donde sea y sube los cambios después.</p>
+      </div>
+      <div class="feat rv">
+        <span class="tag account">Con cuenta</span>
+        <div class="fi"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M6 9a6 6 0 0 1 12 0c0 5 2 6 2 6H4s2-1 2-6M9.5 20a2.5 2.5 0 0 0 5 0"/></svg></div>
+        <h3>Recibe avisos importantes</h3>
+        <p>Propuestas nuevas, contrapropuestas, confirmaciones y vencimientos. Solo avisos del servicio, nunca publicidad.</p>
+      </div>
+      <div class="feat rv">
+        <span class="tag guest">Sin cuenta</span>
+        <div class="fi"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 2a10 10 0 1 0 0 20 10 10 0 0 0 0-20m3.5 6.5-2 5-5 2 2-5z"/></svg></div>
+        <h3>Explora el catálogo</h3>
+        <p>Recorre editoriales y álbumes como invitado, sin registrarte. Cuando quieras intercambiar, creas tu cuenta.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="how" id="como">
+  <div class="wrap">
+    <p class="sec-kicker rv">Cromo por cromo</p>
+    <h2 class="rv">Así se cierra un intercambio</h2>
+    <p class="sec-lede rv">Un flujo pensado para la confianza: nadie ve tu teléfono hasta que ambos quieren el trato.</p>
+    <div class="steps">
+      <div class="step rv"><h3>Publica o encuentra</h3><p>Ofreces tus repetidas o descubres publicaciones que tienen justo lo que te falta, ordenadas por mejor match.</p></div>
+      <div class="step rv"><h3>Negocia</h3><p>Envías una propuesta; la otra parte acepta, rechaza o contrapropone. Hasta 4 rondas, todo dentro de la app.</p></div>
+      <div class="step rv"><h3>Coordina</h3><p>Al aceptar, se comparte el WhatsApp de ambos para acordar lugar y hora del intercambio en persona.</p></div>
+      <div class="step rv"><h3>Confirma y reseña</h3><p>Los dos confirman que se concretó, actualizan su colección y dejan una reseña que construye reputación.</p></div>
+    </div>
+    <div class="trust">
+      <div class="t rv"><b><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#5FAE7D" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 3l8 3v6c0 5-3.5 8-8 9-4.5-1-8-4-8-9V6zM9 12l2 2 4-4"/></svg> Privacidad primero</b><p>Tu teléfono solo se comparte cuando una propuesta es aceptada. Tu correo nunca se muestra a otros usuarios.</p></div>
+      <div class="t rv"><b><svg width="18" height="18" viewBox="0 0 24 24" fill="#D4844A"><path d="M12 3l2.7 5.6 6.1.9-4.4 4.3 1 6.1-5.4-2.9-5.4 2.9 1-6.1L3.2 9.5l6.1-.9z"/></svg> Reputación real</b><p>Las reseñas solo nacen de intercambios confirmados por ambas partes. Nada de calificaciones infladas.</p></div>
+      <div class="t rv"><b><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#ECB079" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M3 3l18 18M7 18a4 4 0 0 1-.5-8 6 6 0 0 1 9.3-3M21 16a4 4 0 0 0-1.5-3.1"/></svg> Offline-first</b><p>Marca tu colección sin internet: los cambios se guardan en tu teléfono y suben solos al reconectar.</p></div>
+    </div>
+  </div>
+</section>
+
+<section id="cuenta">
+  <div class="wrap">
+    <p class="sec-kicker rv">Empieza como quieras</p>
+    <h2 class="rv">¿Invitado o con cuenta?</h2>
+    <p class="sec-lede rv">Puedes mirar sin compromiso. Para coleccionar e intercambiar, necesitas una cuenta gratuita.</p>
+    <div class="acc-grid">
+      <div class="acc guest-card rv">
+        <h3>Modo invitado</h3>
+        <p class="sub">Sin registro · sin datos personales</p>
+        <ul>
+          <li><span class="ck">✓</span> Explorar el catálogo de editoriales y álbumes</li>
+          <li><span class="ck">✓</span> Ver el detalle de cada álbum y sus cromos</li>
+          <li><span class="ck">✓</span> Conocer cómo funcionan los intercambios</li>
+        </ul>
+      </div>
+      <div class="acc account-card rv">
+        <h3>Con cuenta gratuita</h3>
+        <p class="sub">Email o Google · gratis para siempre</p>
+        <ul>
+          <li><span class="ck">★</span> Gestionar tus álbumes y tu progreso</li>
+          <li><span class="ck">★</span> Publicar repetidas y proponer intercambios</li>
+          <li><span class="ck">★</span> Sincronizar tu colección en la nube</li>
+          <li><span class="ck">★</span> Recibir avisos de propuestas y confirmaciones</li>
+          <li><span class="ck">★</span> Construir tu reputación de coleccionista</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="final">
+  <div class="wrap">
+    <p class="sec-kicker rv">¿Cuántos te faltan?</p>
+    <h2 class="rv">Ese cromo que buscas<br />lo tiene alguien <span style="color:var(--amber-l)">cerca de ti</span>.</h2>
+    <div class="hero-ctas rv">
+      <a class="store-btn" href="#" aria-label="Descárgalo en Google Play">
+        <svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linejoin="round"><path d="M5 3.5v17L17.5 12zM5 3.5 13 9M5 20.5 13 15M17.5 12l2.8 1.6c1 .6 1 1 0 1.6l-2.8-3.2 2.8-3.2c1 .6 1 1 0 1.6z"/></svg>
+        <span class="stxt"><span class="s1">Descárgalo en</span><span class="s2">Google Play</span></span>
+      </a>
+      <a class="store-btn" href="#" aria-label="Descárgalo en App Store">
+        <svg width="26" height="26" viewBox="0 0 24 24" fill="currentColor"><path d="M16.4 12.8c0-2.2 1.8-3.2 1.9-3.3-1-1.5-2.6-1.7-3.2-1.7-1.4-.1-2.7.8-3.4.8-.7 0-1.8-.8-2.9-.8-1.5 0-2.9.9-3.7 2.2-1.6 2.7-.4 6.8 1.1 9 .7 1.1 1.6 2.3 2.8 2.3 1.1 0 1.5-.7 2.9-.7s1.7.7 2.9.7c1.2 0 2-1.1 2.7-2.2.9-1.2 1.2-2.4 1.2-2.5-.1 0-2.3-.9-2.3-3.8zM14.2 5.6c.6-.8 1-1.8.9-2.9-.9 0-2 .6-2.6 1.4-.6.7-1.1 1.8-.9 2.8 1 .1 2-.5 2.6-1.3z"/></svg>
+        <span class="stxt"><span class="s1">Descárgalo en</span><span class="s2">App Store</span></span>
+      </a>
+    </div>
+  </div>
+</section>
+
+<footer>
+  <div class="wrap">
+    <div class="foot-grid">
+      <a class="brand" href="#top">
+        <span class="bi"><svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="#20140A" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round"><path d="M7 7h11l-3-3M17 17H6l3 3"/></svg></span>
+        Cromora
+      </a>
+      <div class="foot-links">
+        <a href="./privacy-policy.html">Política de Privacidad</a>
+        <a href="./eliminar-cuenta.html">Eliminar tu cuenta</a>
+        <a href="/cdn-cgi/l/email-protection#92e1fde2fde0e6f7d2fbfce4f7fce6f3fffde1fef3f0e1bcf1fdff"><span class="__cf_email__" data-cfemail="0a79657a65787e6f4a63647c6f647e6b676579666b687924696567">[email&#160;protected]</span></a>
+        <a href="https://inventamoslabs.com">inventamoslabs.com</a>
+      </div>
+    </div>
+    <p class="foot-note">© 2026 <a href="https://inventamoslabs.com">Inventamos Labs</a> — Lima, Perú. Cromora es una aplicación para coleccionar e intercambiar cromos entre personas. Sin pagos dentro de la app, sin publicidad de terceros.</p>
+  </div>
+</footer>
+
+<script data-cfasync="false" src="/cdn-cgi/scripts/5c5dd728/cloudflare-static/email-decode.min.js"></script><script>
+  // reveal on scroll (rAF + getBoundingClientRect: funciona en cualquier contexto)
+  (function () {
+    var els = Array.prototype.slice.call(document.querySelectorAll('.rv'));
+    function check() {
+      var vh = window.innerHeight || document.documentElement.clientHeight;
+      for (var i = els.length - 1; i >= 0; i--) {
+        var r = els[i].getBoundingClientRect();
+        if (r.top < vh * 0.92) {
+          els[i].classList.add('on');
+          els.splice(i, 1);
+        }
+      }
+      if (!els.length) {
+        window.removeEventListener('scroll', onScroll);
+        window.removeEventListener('resize', onScroll);
+        if (iv) { clearInterval(iv); iv = null; }
+      }
+    }
+    function onScroll() { check(); }
+    window.addEventListener('scroll', onScroll, { passive: true });
+    window.addEventListener('resize', onScroll);
+    var iv = setInterval(check, 400); // respaldo: entornos donde 'scroll' no dispara
+    check();
+  })();
+</script>
+</body>
+</html>
