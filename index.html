@@ -1,206 +1,276 @@
-<!doctype html>
+<!DOCTYPE html>
 <html lang="es">
-  <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <meta name="description" content="Inventamos Labs crea soluciones tecnológicas de software: aplicaciones web, móviles, automatización, plataformas cloud y productos digitales como Cromora y EntreGO." />
-    <meta name="theme-color" content="#08111f" />
-    <meta property="og:title" content="Inventamos Labs | Creamos software que acelera negocios" />
-    <meta property="og:description" content="Diseñamos y construimos aplicaciones web, móviles y plataformas cloud con enfoque en producto, UX y escalabilidad." />
-    <meta property="og:type" content="website" />
-    <meta property="og:url" content="https://inventamoslabs.com" />
-    <title>Inventamos Labs | Soluciones tecnológicas de software</title>
-    <link rel="preconnect" href="https://fonts.googleapis.com" />
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=Space+Grotesk:wght@500;600;700&display=swap" rel="stylesheet" />
-    <link rel="stylesheet" href="styles.css" />
-  </head>
-  <body>
-    <div class="noise" aria-hidden="true"></div>
-    <header class="site-header" id="top">
-      <nav class="nav" aria-label="Principal">
-        <a class="brand" href="#top" aria-label="Inventamos Labs inicio">
-          <span class="brand-mark">IL</span>
-          <span>Inventamos Labs</span>
-        </a>
-        <button class="menu-button" type="button" aria-label="Abrir menú" aria-expanded="false">
-          <span></span><span></span><span></span>
-        </button>
-        <div class="nav-links" data-nav-links>
-          <a href="#servicios">Servicios</a>
-          <a href="#productos">Productos</a>
-          <a href="#proceso">Proceso</a>
-          <a href="#contacto" class="nav-cta">Hablemos</a>
-        </div>
-      </nav>
-    </header>
 
-    <main>
-      <section class="hero section-shell">
-        <div class="hero-content reveal">
-          <div class="eyebrow">
-            <span class="pulse"></span>
-            Software studio · Web · Mobile · Cloud
-          </div>
-          <h1>Creamos tecnología que convierte ideas en productos reales.</h1>
-          <p class="hero-copy">
-            En Inventamos Labs diseñamos y desarrollamos aplicaciones web, móviles y plataformas cloud para empresas que quieren lanzar, automatizar y escalar soluciones digitales con velocidad.
-          </p>
-          <div class="hero-actions">
-            <a href="mailto:hola@inventamoslabs.com?subject=Quiero%20crear%20una%20soluci%C3%B3n%20tecnol%C3%B3gica&body=Hola%20Inventamos%20Labs,%20quiero%20conversar%20sobre%20un%20proyecto." class="button primary">Agendar una conversación</a>
-            <a href="#productos" class="button secondary">Ver productos</a>
-          </div>
-          <div class="trust-row" aria-label="Especialidades">
-            <span>UX/UI</span>
-            <span>Flutter</span>
-            <span>NestJS</span>
-            <span>AWS</span>
-            <span>Azure</span>
-          </div>
-        </div>
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Inventamos Labs | Creamos software que acelera negocios</title>
+  <meta name="description"
+    content="Inventamos Labs crea soluciones tecnológicas de software: aplicaciones web, móviles, automatización, plataformas cloud y productos digitales como Cromora y EntreGO.">
+  <meta name="theme-color" content="#1a1916">
+  <meta property="og:type" content="website">
+  <meta property="og:url" content="https://inventamoslabs.com">
+  <meta property="og:title" content="Inventamos Labs | Creamos software que acelera negocios">
+  <meta property="og:description"
+    content="Diseñamos y construimos aplicaciones web, móviles y plataformas cloud con enfoque en producto, UX y escalabilidad.">
 
-        <div class="hero-visual reveal" aria-label="Visual de arquitectura tecnológica">
-          <div class="orb orb-one"></div>
-          <div class="orb orb-two"></div>
-          <div class="dashboard-card main-card">
-            <div class="card-header">
-              <span></span><span></span><span></span>
+  <!-- Fuentes (Google Fonts · internet) -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link
+    href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700&family=Space+Mono:wght@400;700&family=Instrument+Sans:wght@400;500;600&family=Instrument+Serif:ital@0;1&display=swap"
+    rel="stylesheet">
+
+  <link rel="stylesheet" href="styles.css">
+</head>
+
+<body>
+
+  <!-- ░░░░░ NAV ░░░░░ -->
+  <nav class="nav" id="nav">
+    <a href="#top" class="logo" aria-label="Inventamos Labs — inicio">
+      <span class="logo-word">inventamos</span><span class="caret caret-inline"></span><span
+        class="logo-labs">LABS</span>
+    </a>
+    <button class="nav-toggle" id="navToggle" aria-label="Abrir menú" aria-expanded="false">
+      <span></span><span></span><span></span>
+    </button>
+    <div class="nav-links" id="navLinks">
+      <a href="#servicios">Servicios</a>
+      <a href="#productos">Productos</a>
+      <a href="#proceso">Proceso</a>
+      <a href="#contacto" class="btn-pill">Hablemos</a>
+    </div>
+  </nav>
+
+  <!-- ░░░░░ HERO ░░░░░ -->
+  <header class="hero" id="top">
+    <div class="hero-grid">
+      <!-- left -->
+      <div class="hero-copy">
+        <div class="eyebrow eyebrow-bordered">
+          <span class="dot"></span>Software studio · Web · Mobile · Cloud
+        </div>
+        <h1 class="hero-title">Creamos tecnología que convierte ideas en productos reales<span
+            class="caret caret-text"></span></h1>
+        <p class="hero-lead">Diseñamos y desarrollamos aplicaciones web, móviles y plataformas cloud para empresas que
+          quieren lanzar, automatizar y escalar soluciones digitales con velocidad.</p>
+        <div class="hero-actions">
+          <a class="btn btn-primary"
+            href="/cdn-cgi/l/email-protection#21494e4d4061484f57444f55404c4e524d4043520f424e4c1e5254434b4442551c70544844534e0413114253444053041311544f40041311524e4d5442480462120463124f0413115544424f4e4d0462120463124648424007434e45581c694e4d40041311684f57444f55404c4e520413116d4043520d04131150544844534e041311424e4f574453524053041311524e435344041311544f04131151534e584442554e0f">Agendar
+            una conversación <span class="arrow">→</span></a>
+          <a class="btn btn-ghost" href="#productos">Ver productos</a>
+        </div>
+        <div class="stack">
+          <span class="stack-label">STACK</span>
+          <span>UX/UI</span><span class="sep">·</span><span>Flutter</span><span
+            class="sep">·</span><span>NestJS</span><span class="sep">·</span><span>AWS</span><span
+            class="sep">·</span><span>Azure</span>
+        </div>
+      </div>
+
+      <!-- right: editor card -->
+      <div class="hero-visual">
+        <div class="editor">
+          <div class="editor-bar">
+            <div class="dots"><span></span><span></span><span class="dot-coral"></span></div>
+            <div class="editor-file">idea.tsx</div>
+            <div class="editor-tag">INVENTAMOS·LABS</div>
+          </div>
+          <div class="editor-code">
+            <div class="code-line"><span class="ln">1</span><span class="tok-key">const</span><span
+                class="tok-var">idea</span><span class="tok-op">=</span><span class="tok-coral">useCliente()</span>
             </div>
-            <div class="metric-grid">
-              <article>
-                <strong>01</strong>
-                <small>Discovery</small>
-              </article>
-              <article>
-                <strong>02</strong>
-                <small>UX & MVP</small>
-              </article>
-              <article>
-                <strong>03</strong>
-                <small>Build</small>
-              </article>
-              <article>
-                <strong>04</strong>
-                <small>Scale</small>
-              </article>
-            </div>
-            <div class="code-card">
-              <span>deploy</span> inventamoslabs/product<br />
-              <span>status</span> ready_to_launch<br />
-              <span>focus</span> product_experience
-            </div>
+            <div class="code-line"><span class="ln">2</span><span class="tok-key">function</span><span
+                class="tok-var">construir(idea)</span><span class="tok-op">{</span></div>
+            <div class="code-line"><span class="ln">3</span><span class="tok-key indent">return</span><span
+                class="tok-green">lanzar(</span><span class="tok-var">diseñar(idea)</span><span
+                class="tok-green">)</span><span class="caret caret-block"></span></div>
+            <div class="code-line"><span class="ln">4</span><span class="tok-op">}</span></div>
           </div>
-          <div class="floating-chip chip-one">Cromora</div>
-          <div class="floating-chip chip-two">EntreGO</div>
-          <div class="floating-chip chip-three">Cloud Native</div>
+          <div class="editor-status">
+            <span><span class="st-key">deploy</span> inventamoslabs/product</span>
+            <span><span class="st-key">status</span> <span class="tok-green">ready_to_launch</span></span>
+            <span><span class="st-key">focus</span> product_experience</span>
+          </div>
         </div>
-      </section>
+        <div class="chips">
+          <span class="chip"><span class="chip-dot" style="background:var(--cromora)"></span>Cromora</span>
+          <span class="chip"><span class="chip-dot" style="background:var(--entrego)"></span>EntreGO</span>
+        </div>
+      </div>
+    </div>
+  </header>
 
-      <section class="section-shell logos reveal" aria-label="Mensaje principal">
-        <p>Construimos productos propios y soluciones a medida para marcas que quieren moverse más rápido.</p>
-      </section>
-
-      <section class="section-shell services" id="servicios">
-        <div class="section-heading reveal">
-          <span class="section-kicker">Qué hacemos</span>
-          <h2>Del concepto al producto, sin perder foco en negocio.</h2>
-          <p>Unimos estrategia, diseño y desarrollo para crear software útil, atractivo y sostenible.</p>
-        </div>
-        <div class="service-grid">
-          <article class="service-card reveal">
-            <div class="icon">✦</div>
-            <h3>Aplicaciones web</h3>
-            <p>Dashboards, plataformas internas, portales de atención, backoffices y sistemas transaccionales.</p>
-          </article>
-          <article class="service-card reveal">
-            <div class="icon">▣</div>
-            <h3>Aplicaciones móviles</h3>
-            <p>Apps para iOS y Android con Flutter, experiencia cuidada, autenticación, notificaciones y pagos.</p>
-          </article>
-          <article class="service-card reveal">
-            <div class="icon">⌁</div>
-            <h3>Arquitectura cloud</h3>
-            <p>APIs, microservicios, serverless, colas, eventos, almacenamiento y despliegues automatizados.</p>
-          </article>
-          <article class="service-card reveal">
-            <div class="icon">◎</div>
-            <h3>Automatización</h3>
-            <p>Integraciones, bots, flujos internos, procesamiento de datos y conexión con servicios externos.</p>
-          </article>
-        </div>
-      </section>
-
-      <section class="section-shell products" id="productos">
-        <div class="section-heading reveal">
-          <span class="section-kicker">Laboratorio de productos</span>
-          <h2>Aplicaciones que nacen desde problemas reales.</h2>
-        </div>
-        <div class="product-showcase">
-          <article class="product-card cromora reveal">
-            <span class="tag">Colecciones · Comunidad</span>
-            <h3>Cromora</h3>
-            <p>Una experiencia digital para gestionar álbumes, figuritas, progreso, repetidos e intercambios.</p>
-            <a href="#contacto">Conocer enfoque →</a>
-          </article>
-          <article class="product-card entrego reveal">
-            <span class="tag">Operaciones · Delivery</span>
-            <h3>EntreGO</h3>
-            <p>Solución orientada a conectar operaciones, entregas y seguimiento con una experiencia simple.</p>
-            <a href="#contacto">Explorar posibilidades →</a>
-          </article>
-          <article class="product-card next reveal">
-            <span class="tag">Próximamente</span>
-            <h3>Nuevos productos</h3>
-            <p>Estamos preparando nuevas soluciones para automatizar negocios, comunidades y procesos digitales.</p>
-            <a href="#contacto">Crear una idea juntos →</a>
-          </article>
-        </div>
-      </section>
-
-      <section class="section-shell process" id="proceso">
-        <div class="section-heading reveal">
-          <span class="section-kicker">Cómo trabajamos</span>
-          <h2>Un proceso diseñado para avanzar con claridad.</h2>
-        </div>
-        <div class="timeline">
-          <article class="timeline-item reveal">
-            <span>01</span>
-            <h3>Descubrimos</h3>
-            <p>Entendemos el problema, usuarios, restricciones, integraciones y objetivo comercial.</p>
-          </article>
-          <article class="timeline-item reveal">
-            <span>02</span>
-            <h3>Diseñamos</h3>
-            <p>Convertimos la idea en flujos, prototipos, arquitectura y backlog priorizado.</p>
-          </article>
-          <article class="timeline-item reveal">
-            <span>03</span>
-            <h3>Construimos</h3>
-            <p>Desarrollamos iterativamente con foco en calidad, seguridad y mantenibilidad.</p>
-          </article>
-          <article class="timeline-item reveal">
-            <span>04</span>
-            <h3>Lanzamos</h3>
-            <p>Publicamos, medimos, iteramos y dejamos bases listas para escalar.</p>
-          </article>
-        </div>
-      </section>
-
-      <section class="section-shell cta-section reveal" id="contacto">
+  <!-- ░░░░░ SERVICIOS ░░░░░ -->
+  <section class="section section-light" id="servicios">
+    <div class="container">
+      <div class="section-head reveal">
         <div>
-          <span class="section-kicker">Empecemos</span>
-          <h2>¿Tienes una idea, proceso o app que quieres convertir en producto?</h2>
-          <p>Cuéntanos qué quieres construir. Te ayudamos a aterrizar el alcance, priorizar el MVP y definir la mejor ruta técnica.</p>
+          <div class="eyebrow">Qué hacemos</div>
+          <h2 class="section-title">Del concepto al producto, sin perder foco en negocio.</h2>
         </div>
-        <a href="mailto:contact@inventamoslabs.com?subject=Quiero%20crear%20una%20soluci%C3%B3n%20tecnol%C3%B3gica&body=Hola%20Inventamos%20Labs,%20quiero%20conversar%20sobre%20un%20proyecto." class="button primary large">Hablemos de tu proyecto</a>
-      </section>
-    </main>
+        <p class="section-intro">Unimos estrategia, diseño y desarrollo para crear software útil, atractivo y
+          sostenible.</p>
+      </div>
 
-    <footer class="footer section-shell">
-      <p>© <span id="year"></span> Inventamos Labs. Creamos software para acelerar ideas.</p>
-      <a href="mailto:contact@inventamoslabs.com">contact@inventamoslabs.com</a>
-    </footer>
+      <div class="cards-grid">
+        <article class="card reveal">
+          <div class="card-num">01</div>
+          <div class="icon-tile"><span class="caret caret-tile"></span></div>
+          <h3 class="card-title">Aplicaciones web</h3>
+          <p class="card-text">Dashboards, plataformas internas, portales de atención, backoffices y sistemas
+            transaccionales.</p>
+        </article>
+        <article class="card reveal">
+          <div class="card-num">02</div>
+          <div class="icon-tile"><span class="grid-mark"><i></i><i></i><i></i><i class="accent"></i></span></div>
+          <h3 class="card-title">Aplicaciones móviles</h3>
+          <p class="card-text">Apps para iOS y Android con Flutter: experiencia cuidada, autenticación, notificaciones y
+            pagos.</p>
+        </article>
+        <article class="card reveal">
+          <div class="card-num">03</div>
+          <div class="icon-tile"><span class="bars"><i></i><i class="accent"></i><i></i></span></div>
+          <h3 class="card-title">Arquitectura cloud</h3>
+          <p class="card-text">APIs, microservicios, serverless, colas, eventos, almacenamiento y despliegues
+            automatizados.</p>
+        </article>
+        <article class="card reveal">
+          <div class="card-num">04</div>
+          <div class="icon-tile"><span class="ring"></span></div>
+          <h3 class="card-title">Automatización</h3>
+          <p class="card-text">Integraciones, bots, flujos internos, procesamiento de datos y conexión con servicios
+            externos.</p>
+        </article>
+      </div>
+    </div>
+  </section>
 
-    <script src="app.js"></script>
-  </body>
+  <!-- ░░░░░ PRODUCTOS ░░░░░ -->
+  <section class="section section-dark" id="productos">
+    <div class="container">
+      <div class="section-head reveal">
+        <div>
+          <div class="eyebrow">Laboratorio de productos</div>
+          <h2 class="section-title">Aplicaciones que nacen desde problemas reales.</h2>
+        </div>
+        <p class="section-intro on-dark">Construimos productos propios y soluciones a medida para marcas que quieren
+          moverse más rápido.</p>
+      </div>
+
+      <div class="products-grid">
+        <article class="product product-cromora reveal">
+          <div class="product-head">
+            <div class="product-id">
+              <div class="product-tile"><span class="caret-static" style="background:var(--cromora)"></span></div>
+              <div>
+                <div class="product-name">Cromora</div>
+                <div class="product-kicker">COLECCIONES · COMUNIDAD</div>
+              </div>
+            </div>
+          </div>
+          <div class="product-body">
+            <p>Una experiencia digital para gestionar álbumes, figuritas, progreso, repetidos e intercambios.</p>
+            <a href="#contacto" class="product-link" style="color:var(--cromora)">Conocer enfoque →</a>
+          </div>
+        </article>
+
+        <article class="product product-entrego reveal">
+          <div class="product-head">
+            <div class="product-id">
+              <div class="product-tile"><span class="caret-static" style="background:var(--entrego)"></span></div>
+              <div>
+                <div class="product-name">EntreGO</div>
+                <div class="product-kicker">OPERACIONES · DELIVERY</div>
+              </div>
+            </div>
+          </div>
+          <div class="product-body">
+            <p>Solución orientada a conectar operaciones, entregas y seguimiento con una experiencia simple.</p>
+            <a href="#contacto" class="product-link" style="color:var(--entrego)">Explorar posibilidades →</a>
+          </div>
+        </article>
+
+        <article class="product product-new reveal">
+          <div class="product-head">
+            <div class="product-id">
+              <div class="product-tile"><span class="caret caret-static-coral"></span></div>
+              <div>
+                <div class="product-name">Nuevos productos</div>
+                <div class="product-kicker">PRÓXIMAMENTE</div>
+              </div>
+            </div>
+          </div>
+          <div class="product-body">
+            <p>Estamos preparando nuevas soluciones para automatizar negocios, comunidades y procesos digitales.</p>
+            <a href="#contacto" class="product-link" style="color:var(--coral)">Crear una idea juntos →</a>
+          </div>
+        </article>
+      </div>
+    </div>
+  </section>
+
+  <!-- ░░░░░ PROCESO ░░░░░ -->
+  <section class="section section-light" id="proceso">
+    <div class="container">
+      <div class="reveal">
+        <div class="eyebrow">Cómo trabajamos</div>
+        <h2 class="section-title narrow">Un proceso diseñado para avanzar con claridad.</h2>
+      </div>
+
+      <div class="process-grid reveal">
+        <div class="step">
+          <div class="step-num">01<span class="step-line"></span></div>
+          <h3 class="step-title">Descubrimos</h3>
+          <p class="step-text">Entendemos el problema, usuarios, restricciones, integraciones y objetivo comercial.</p>
+        </div>
+        <div class="step">
+          <div class="step-num">02<span class="step-line"></span></div>
+          <h3 class="step-title">Diseñamos</h3>
+          <p class="step-text">Convertimos la idea en flujos, prototipos, arquitectura y backlog priorizado.</p>
+        </div>
+        <div class="step">
+          <div class="step-num">03<span class="step-line"></span></div>
+          <h3 class="step-title">Construimos</h3>
+          <p class="step-text">Desarrollamos iterativamente con foco en calidad, seguridad y mantenibilidad.</p>
+        </div>
+        <div class="step">
+          <div class="step-num">04<span class="step-line"></span></div>
+          <h3 class="step-title">Lanzamos</h3>
+          <p class="step-text">Publicamos, medimos, iteramos y dejamos bases listas para escalar.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ░░░░░ CONTACTO ░░░░░ -->
+  <section class="section section-dark contact" id="contacto">
+    <div class="container contact-inner reveal">
+      <div class="eyebrow">Empecemos</div>
+      <h2 class="contact-title">¿Tienes una idea, proceso o app que quieres convertir en producto<span
+          class="caret caret-text"></span></h2>
+      <p class="contact-lead">Cuéntanos qué quieres construir. Te ayudamos a aterrizar el alcance, priorizar el MVP y
+        definir la mejor ruta técnica.</p>
+      <a class="btn btn-primary btn-lg"
+        href="/cdn-cgi/l/email-protection#a1c2cecfd5c0c2d5e1c8cfd7c4cfd5c0ccced2cdc0c3d28fc2cecc9ed2d4c3cbc4c2d59cf0d4c8c4d3ce849391c2d3c4c0d3849391d4cfc0849391d2cecdd4c2c884e29284e392cf849391d5c4c2cfcecd84e29284e392c6c8c2c087c3cec5d89ce9cecdc0849391e8cfd7c4cfd5c0ccced2849391edc0c3d28d849391d0d4c8c4d3ce849391c2cecfd7c4d3d2c0d3849391d2cec3d3c4849391d4cf849391d1d3ced8c4c2d5ce8f">Hablemos
+        de tu proyecto <span class="arrow">→</span></a>
+    </div>
+  </section>
+
+  <!-- ░░░░░ FOOTER ░░░░░ -->
+  <footer class="footer">
+    <div class="container footer-inner">
+      <div class="logo logo-footer">
+        <span class="logo-word">inventamos</span><span class="caret caret-inline"></span><span
+          class="logo-labs">LABS</span>
+      </div>
+      <div class="footer-copy">© 2026 Inventamos Labs. Creamos software para acelerar ideas.</div>
+      <a class="footer-mail" href="mailto:contact@inventamoslabs.com"><span>contact@inventamoslabs.com</span></a>
+    </div>
+  </footer>
+
+  <script src="script.js"></script>
+</body>
+
 </html>
